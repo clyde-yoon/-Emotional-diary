@@ -3,6 +3,7 @@ import './App.css'
 import Diary from './pages/Diary'
 import Home from './pages/Home'
 import New from './pages/New'
+import NotFound from './pages/Notfound'
 import { Routes, Route } from 'react-router-dom'
 function App() {
  //1. "/" 모든 일기를 조회하는 홈페이지
@@ -14,6 +15,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/new' element={<New/>}/>
       <Route path='/diary' element={<Diary/>}/>
+      <Route path='*' element={<NotFound/>}/>
     </Routes>
   )
 }
