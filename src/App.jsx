@@ -5,11 +5,8 @@ import Home from './pages/Home'
 import New from './pages/New'
 import NotFound from './pages/Notfound'
 import { Routes, Route, Link, useNavigate } from 'react-router-dom'
-import emotion1 from './assets/emotion1.png'
-import emotion2 from './assets/emotion2.png'
-import emotion3 from './assets/emotion3.png'
-import emotion4 from './assets/emotion4.png'
-import emotion5 from './assets/emotion5.png'
+import { getemotionImage } from './util/get-emotion-image'
+
 
 function App() {
   const nav = useNavigate();
@@ -20,11 +17,11 @@ function App() {
   return (
     <>
     <div>
-      <img src={emotion1} alt="" />
-      <img src={emotion2} alt="" />
-      <img src={emotion3} alt="" />
-      <img src={emotion4} alt="" />
-      <img src={emotion5} alt="" />
+      <img src={getemotionImage(1)} alt="" />
+      <img src={getemotionImage(2)} alt="" />
+      <img src={getemotionImage(3)} alt="" />
+      <img src={getemotionImage(4)} alt="" />
+      <img src={getemotionImage(5)} alt="" />
     </div>
     <div>
       <Link to={'/'}>Home</Link>s
