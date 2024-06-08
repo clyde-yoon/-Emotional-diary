@@ -9,7 +9,7 @@ import { getemotionImage } from './util/get-emotion-image'
 import Button from './components/Button'
 import Header from './components/Header'
 import Edit from './pages/Edit'
-import { useReducer, useRef } from 'react'
+import { useReducer, useRef, createContext } from 'react'
 
 const mockData = [
   {
@@ -40,6 +40,9 @@ function reducer(state, action){
     default : return state;
   }
 }
+
+const DiaryStateContext = createContext();
+
 function App() {
 const [data, dispatch] = useReducer(reducer, mockData);
 const idRef = useRef(4);
@@ -76,13 +79,15 @@ const onCreate = (createdDate, emotionId, content)=>{
 
   return (
     <>
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/new' element={<New/>}/>
-      <Route path='/diary/:id' element={<Diary/>}/>
-      <Route path='/edit/:id' element={<Edit/>}/>
-      <Route path='*' element={<NotFound/>}/>
-    </Routes>
+    <DiaryStateContext.Provider value={data}>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/new' element={<New/>}/>
+        <Route path='/diary/:id' element={<Diary/>}/>
+        <Route path='/edit/:id' element={<Edit/>}/>
+        <Route path='*' element={<NotFound/>}/>
+      </Routes>
+    </DiaryStateContext.Provider>
     </>
   )
 }
