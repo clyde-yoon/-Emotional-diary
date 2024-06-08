@@ -9,7 +9,7 @@ import { getemotionImage } from './util/get-emotion-image'
 import Button from './components/Button'
 import Header from './components/Header'
 import Edit from './pages/Edit'
-import { useReducer } from 'react'
+import { useReducer, useRef } from 'react'
 
 const mockData = [
   {
@@ -33,10 +33,47 @@ const mockData = [
 ]
 
 function reducer(state, action){
-  return state
+  switch(action.type){
+    case "CREATE" : return [action.data,...state]
+    case "UPDATE" : return state.map((item)=> String(item.id) === String(action.data.id) ? action.data : item)
+    case "DELETE" : return state.filter((item)=> String(item.id) !== String(action.id))
+    default : return state;
+  }
 }
 function App() {
 const [data, dispatch] = useReducer(reducer, mockData);
+const idRef = useRef(4);
+const onCreate = (createdDate, emotionId, content)=>{
+  dispatch({
+    type : 'CREATE',
+    data : {
+      id : idRef.current++,
+      createdDate,
+      emotionId,
+      content,
+    }
+    })
+  }
+
+  const onUpdate = (id, createdDate, emtionId, content)=>{
+      dispatch({
+      type : "UPDATE",
+      data : {
+        id,
+        createdDate,
+        emtionId,
+        content,
+      }
+      })
+  }
+
+    const onDelete = (id)=>{
+      dispatch({
+        type : 'DELETE',
+        id,
+      })
+    }
+
   return (
     <>
     <Routes>
