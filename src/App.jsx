@@ -42,6 +42,7 @@ function reducer(state, action){
 }
 
 const DiaryStateContext = createContext();
+const DiaryDispatchContext = createContext();
 
 function App() {
 const [data, dispatch] = useReducer(reducer, mockData);
@@ -80,13 +81,17 @@ const onCreate = (createdDate, emotionId, content)=>{
   return (
     <>
     <DiaryStateContext.Provider value={data}>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/new' element={<New/>}/>
-        <Route path='/diary/:id' element={<Diary/>}/>
-        <Route path='/edit/:id' element={<Edit/>}/>
-        <Route path='*' element={<NotFound/>}/>
-      </Routes>
+      <DiaryDispatchContext.Provider value={{
+        onCreate,onUpdate,onDelete
+      }}>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/new' element={<New/>}/>
+          <Route path='/diary/:id' element={<Diary/>}/>
+          <Route path='/edit/:id' element={<Edit/>}/>
+          <Route path='*' element={<NotFound/>}/>
+        </Routes>
+      </DiaryDispatchContext.Provider>
     </DiaryStateContext.Provider>
     </>
   )
