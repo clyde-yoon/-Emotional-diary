@@ -1,22 +1,22 @@
-.Header{
-    display: flex;
-    align-items: center;
-    padding: 20px 0px;
-    border-bottom: 1px solid rgb(256, 256, 256);
+.Header {
+  display: flex;
+  align-items: center;
+  padding: 20px 0px;
+  border-bottom: 1px solid rgb(256, 256, 256);
 }
-.Header > div{
-    display: flex;
+.Header > div {
+  display: flex;
 }
-.Header .header_center{
-    width: 50%;
-    font-size: 25px;
-    justify-content: center;
+.Header .header_center {
+  width: 50%;
+  font-size: 25px;
+  justify-content: center;
 }
-.Header .header_left{
-    width: 25%;
-    justify-content: flex-start;
+.Header .header_left {
+  width: 25%;
+  justify-content: flex-start;
 }
-.Header .header_right{
-    width: 25%;
-    justify-content: flex-end;
+.Header .header_right {
+  width: 25%;
+  justify-content: flex-end;
 }

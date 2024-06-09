@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-const Diary=()=>{
-const params = useParams()
+const Diary = () => {
+  const params = useParams();
 
-    return <div>Diary</div>
-}
+  return <div>Diary</div>;
+};
 export default Diary;
